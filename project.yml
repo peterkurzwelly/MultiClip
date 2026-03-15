@@ -1,0 +1,33 @@
+name: MultiClip
+options:
+  bundleIdPrefix: com.multiclip
+  deploymentTarget:
+    macOS: "14.0"
+  defaultLDFlags: false
+  generateEmptyDirectories: true
+
+packages:
+  HotKey:
+    url: https://github.com/soffes/HotKey
+    from: "0.2.1"
+
+targets:
+  MultiClip:
+    type: application
+    platform: macOS
+    sources:
+      - path: MultiClip
+    dependencies:
+      - package: HotKey
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.multiclip.app
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: 1
+        SWIFT_VERSION: "6.0"
+        ENABLE_HARDENED_RUNTIME: true
+        CODE_SIGN_ENTITLEMENTS: MultiClip/Resources/MultiClip.entitlements
+        CODE_SIGN_IDENTITY: "-"
+        INFOPLIST_KEY_LSUIElement: true
+        GENERATE_INFOPLIST_FILE: true
+        MACOSX_DEPLOYMENT_TARGET: "14.0"
